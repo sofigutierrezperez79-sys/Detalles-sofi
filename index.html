@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles SOFI & Creaciones Personalizadas</title>
+    <style>
+        /* --- ESTILOS GENERALES Y PALETA DE COLORES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fcf6f8;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* --- CABECERA / PORTADA PRINCIPAL --- */
+        header {
+            background: linear-gradient(135deg, #ffeef4 0%, #e3f2ff 100%);
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 5px solid #ffd700;
+        }
+
+        .urgente-tag {
+            background: linear-gradient(90deg, #ff3366, #ff6699);
+            color: white;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 11pt;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(255, 51, 102, 0.2);
+        }
+
+        h1 {
+            font-size: 38pt;
+            color: #1a3a5f;
+            font-weight: 900;
+            margin: 5px 0;
+        }
+
+        h1 span {
+            color: #ff3366;
+            text-shadow: 2px 2px 0px #ffd700;
+        }
+
+        .subtitle {
+            font-size: 16pt;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        /* --- MASCOTAS DE BIENVENIDA --- */
+        .mascotas-container {
+            background: white;
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 32pt;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 2px dashed #ff6699;
+            margin-bottom: 15px;
+        }
+
+        .slogan {
+            font-size: 13pt;
+            color: #ff3366;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- SECCIONES DE SERVICIOS --- */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2.section-title {
+            font-size: 22pt;
+            color: #1a3a5f;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h2.section-title::after {
+            content: '✨';
+            color: #ffd700;
+            margin-left: 10px;
+        }
+
+        /* Grid de servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            border: 2px solid #f0f0f0;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #ffccd8;
+        }
+
+        .card-icon {
+            font-size: 40pt;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 15pt;
+            color: #ff3366;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-desc {
+            font-size: 11pt;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Colores alternados para las tarjetas según tus secciones */
+        .digital .card-title { color: #2b579a; }
+        .digital:hover { border-color: #b3d7ff; }
+        
+        /* --- BANNER DE ENTREGA --- */
+        .delivery-banner {
+            background: #eaf4ff;
+            color: #1a3a5f;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 13pt;
+            margin: 40px 0;
+            border: 2px dashed #b3d7ff;
+        }
+
+        /* --- SECCIÓN DE CONTACTO / WHATSAPP --- */
+        .contact-section {
+            background: linear-gradient(135deg, #0df2c9 0%, #02a684 100%);
+            color: white;
+            border-radius: 25px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(2,166,132,0.25);
+            margin-top: 50px;
+        }
+
+        .contact-section h3 {
+            font-size: 18pt;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .btn-whatsapp-large {
+            display: inline-block;
+            background-color: white;
+            color: #02a684;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 22pt;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: scale 0.2s;
+        }
+
+        .btn-whatsapp-large:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- BOTÓN FLOTANTE DE WHATSAPP --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30pt;
+            line-height: 65px;
+            box-shadow: 2px 5px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- PIE DE PÁGINA --- */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 10pt;
+            color: #888;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BOTÓN FLOTANTE -->
+    <a href="https://wa.me/51901259002" class="whatsapp-float" target="_blank">💬</a>
+
+    <!-- PORTADA -->
+    <header>
+        <div class="urgente-tag">¿TAREAS DE ÚLTIMA HORA? ¡NOSOTROS TE AYUDAMOS!</div>
+        <div class="mascotas-container">👩🏻‍🎨🐼🐰</div>
+        <h1>Detalles <span>SOFI</span></h1>
+        <p class="subtitle">&amp; Creaciones Personalizadas</p>
+        <p class="slogan">💝 Calidad • Creatividad • Amor 💝</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- SECCIÓN 1: DIGITALES -->
+        <h2 class="section-title">💻 Servicios Digitales y Oficina</h2>
+        <div class="services-grid">
+            <div class="card digital">
+                <div class="card-icon">💻</div>
+                <div class="card-title">Tipeos en Word y Excel</div>
+                <p class="card-desc">Transcripción impecable de apuntes, informes complejos, digitalización de textos y creación de hojas de cálculo estructuradas a máxima velocidad.</p>
+            </div>
+            <div class="card digital">
+                <div class="card-icon">🖨️</div>
+                <div class="card-title">Copias e Impresiones</div>
+                <p class="card-desc">A color y B/N. Impresión láser e inyección de tinta con colores sumamente vivos y nítidos. Ideal para separatas y contratos.</p>
+            </div>
+            <div class="card digital">
+                <div class="card-icon">🖥️</div>
+                <div class="card-title">Diseños Creativos</div>
+                <p class="card-desc">Modelados y composiciones visuales atractivas hechas desde cero para destacar tus tareas, marcas o proyectos.</p>
+            </div>
+        </div>
+
+        <div class="delivery-banner">
+            ⚡ ENTREGAS SUPER RÁPIDAS Y TOTALMENTE PUNTUALES ⚡
+        </div>
+
+        <!-- SECCIÓN 2: PAPELERÍA -->
+        <h2 class="section-title">🎨 Papelería Creativa y Recuerdos</h2>
+        <div class="services-grid">
+            <div class="card">
+                <div class="card-icon">💌</div>
+                <div class="card-title">Invitaciones Personalizadas</div>
+                <p class="card-desc">Tarjetas de alta gama digital e impresa para Bodas, Cumpleaños, Baby Showers y Quinceañeros con temáticas mágicas.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🏷️</div>
+                <div class="card-title">Stickers Adhesivos</div>
+                <p class="card-desc">Etiquetas autoadhesivas troqueladas con tus personajes favoritos, perfectas para útiles escolares o empaques.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📸</div>
+                <div class="card-title">Impresión de Fotos</div>
+                <p class="card-desc">Papel fotográfico premium de alta duración. Acabados profesionales brillantes resistentes a la luz para tus recuerdos.</p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DE CONTACTO -->
+        <div class="contact-section">
+            <h3>💬 ¡HAZ TU PEDIDO DIRECTO POR WHATSAPP!</h3>
+            <p>¡Creamos juntos tus mejores ideas de forma divertida!</p>
+            <a href="https://wa.me/51901259002" class="btn-whatsapp-large" target="_blank">
+                +51 901259002
+            </a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Detalles SOFI - ¡Todo lo que necesitas en un solo lugar! - Divertido, Puntual y Creativo</p>
+    </footer>
+
+</body>
+</html>
